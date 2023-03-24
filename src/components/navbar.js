@@ -1,17 +1,14 @@
 import { useState } from 'react';
 import { createStyles, Navbar, Group, Code, getStylesRef, rem } from '@mantine/core';
 import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
-  IconSwitchHorizontal,
   IconLogout,
+  IconHome,
+  IconSearch,
+  IconMusic,
 } from '@tabler/icons-react';
 import { MantineLogo } from '@mantine/ds';
+
+import logo from './NoiseTrackerLogo.png';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -69,13 +66,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: '', label: 'Home', icon: IconBellRinging },
-  { link: '', label: 'Search', icon: IconReceipt2 },
-  { link: '', label: 'My Music', icon: IconFingerprint },
-  // { link: '', label: 'SSH Keys', icon: IconKey },
-  // { link: '', label: 'Databases', icon: IconDatabaseImport },
-  // { link: '', label: 'Authentication', icon: Icon2fa },
-  // { link: '', label: 'Other Settings', icon: IconSettings },
+  { link: '', label: 'Home', icon: IconHome },
+  { link: '', label: 'Search', icon: IconSearch },
+  { link: '', label: 'My Music', icon: IconMusic },
 ];
 
 function NavbarSimple() {
@@ -98,22 +91,16 @@ function NavbarSimple() {
   ));
 
   return (
-    <Navbar height={700} width={{ sm: 300 }}  p="md">
+    <Navbar height={700} width={{ sm: 240 }}  p="md">
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
-          <MantineLogo size={28} />
-          <Code sx={{ fontWeight: 700 }}>v3.1.2</Code>
+        <a component="a" href="/"><img  style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
         </Group>
         {links}
       </Navbar.Section>
 
       <Navbar.Section className={classes.footer}>
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
-          <IconSwitchHorizontal className={classes.linkIcon} stroke={1.5} />
-          <span>Change account</span>
-        </a>
-
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+               <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>
