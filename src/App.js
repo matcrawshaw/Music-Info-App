@@ -59,7 +59,7 @@ getArtistImage("four year strong")
  <Button
         component="a"
         rel="noopener noreferrer"
-        href="https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=http://localhost:3000/" ></Button>
+        href="https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=http://courageous-bienenstitch-5285d5.netlify.app" >Link with LastFM</Button>
 
 <div style={{display: "flex"}}>
 <NavbarSimple/>
