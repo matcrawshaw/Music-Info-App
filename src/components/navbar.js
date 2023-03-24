@@ -105,7 +105,4 @@ function NavbarSimple() {
     </Navbar>
   );
 }
-
-/* bea waz 'ere 2k23 */
-/* it broke as soon as she left 2k23*/
 export default NavbarSimple
