@@ -2,7 +2,8 @@ import './App.css';
 import NavbarSimple from './components/navbar'
 import CardGrid from './components/cardGrid';
 import { Button } from '@mantine/core';
-import MD5 from "crypto-js/md5"
+import MD5 from "crypto-js/md5";
+import FooterSocial from './components/footer';
 
 const token = window.location.search.substring(7);   
 
@@ -70,6 +71,8 @@ getArtistImage("four year strong")
 </div>
 
 </div>
+
+<FooterSocial/>
     </div>
   );
 }
