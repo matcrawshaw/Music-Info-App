@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     fontFamily: `Greycliff CF ${theme.fontFamily}`,
-    fontWeight: 900,
+    fontWeight: 800,
     color: theme.white,
     lineHeight: 1.2,
     fontSize: rem(32),
@@ -23,7 +23,7 @@ const useStyles = createStyles((theme) => ({
   category: {
     color: theme.white,
     opacity: 0.7,
-    fontWeight: 700,
+    fontWeight: 600,
     textTransform: 'uppercase',
   },
 }));
@@ -38,7 +38,7 @@ function ArticleCardImage({ image, title, category }: ArticleCardImageProps) {
   const { classes } = useStyles();
 
   return (
-    <Paper style={{width: rem(200), height: rem(350)}}
+    <Paper style={{width: rem(200), height: rem(200)}}
       shadow="md"
       p="xl"
       radius="md"
