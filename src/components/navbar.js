@@ -9,22 +9,21 @@ import {
 import { MantineLogo } from '@mantine/ds';
 
 import logo from './NoiseTrackerLogo.png';
+import { NavLink } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   header: {
     paddingBottom: theme.spacing.md,
     marginBottom: `calc(${theme.spacing.md} * 1.5)`,
-    borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
-    }`,
+    borderBottom: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
+      }`,
   },
 
   footer: {
     paddingTop: theme.spacing.md,
     marginTop: theme.spacing.md,
-    borderTop: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
-    }`,
+    borderTop: `${rem(1)} solid ${theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[2]
+      }`,
   },
 
   link: {
@@ -66,9 +65,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: '', label: 'Home', icon: IconHome },
-  { link: '', label: 'Search', icon: IconSearch },
-  { link: '', label: 'My Music', icon: IconMusic },
+  { link: '', to: '/', label: 'Home', icon: IconHome },
+  { link: '', to: '/search', label: 'Search', icon: IconSearch },
+  { link: '', to: '/mymusic', label: 'My Music', icon: IconMusic },
 ];
 
 function NavbarSimple() {
@@ -76,31 +75,29 @@ function NavbarSimple() {
   const [active, setActive] = useState('Billing');
 
   const links = data.map((item) => (
-    <a
-      className={cx(classes.link, { [classes.linkActive]: item.label === active })}
-      href={item.link}
+    <NavLink
+      to={item.to}
+      end
+      className={({ isActive }) => cx(classes.link, { [classes.linkActive]: isActive })}
       key={item.label}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(item.label);
-      }}
+
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
-    </a>
+    </NavLink>
   ));
 
   return (
-    <Navbar height={700} width={{ sm: 240 }}  p="md">
+    <Navbar height={700} width={{ sm: 240 }} p="md">
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
-        <a component="a" href="/"><img  style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
+          <a component="a" href="/"><img style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
         </Group>
         {links}
       </Navbar.Section>
 
       <Navbar.Section className={classes.footer}>
-               <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>
@@ -109,4 +106,6 @@ function NavbarSimple() {
   );
 }
 
+/* bea waz 'ere 2k23 */
+/* it broke as soon as she left 2k23*/
 export default NavbarSimple
