@@ -3,18 +3,21 @@ import NavbarSimple from './components/navbar'
 import CardGrid from './components/cardGrid';
 import { Button } from '@mantine/core';
 import MD5 from "crypto-js/md5";
+import { Route, Routes, Router, BrowserRouter } from 'react-router-dom';
+import HomePage from './Pages/Home';
+import SearchPage from './Pages/Search';
+import MyMusicPage from './Pages/MyMusic';;
 import SearchBar from './components/SearchBar';
 
 
 const token = window.location.search.substring(7);
-
 if (token) {
   const hash = MD5("api_keyf8b32377438bdf91d564673f48fba700methodauth.getSessiontoken" + token + "1a7a3c0954170c39e06a9f6c1a5d9358");
 
   fetch("http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=f8b32377438bdf91d564673f48fba700&token=" + token + "&format=json&api_sig=" + hash)
     .then((response) => response.json())
     .then((data) => {
-      console.log("datajson search:", data);
+      console.log(data);
       const currentUsername = data.session.name;
       const currentUserkey = data.session.key;
 
@@ -55,26 +58,34 @@ function App() {
 
 
 
-  getArtistImage("four year strong")
+
 
   return (
-    <div className="App" >
-      <Button
-        component="a"
-        rel="noopener noreferrer"
-        href="https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=http://courageous-bienenstitch-5285d5.netlify.app" >Link with LastFM</Button>
+    <div className="App">
 
-      <SearchBar />
+      <BrowserRouter>
+        <Button
+          component="a"
+          rel="noopener noreferrer"
+          href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}`}>Link with LastFM</Button>
+        <div style={{ display: "flex" }}>
+          <NavbarSimple />
 
-      <div style={{ display: "flex" }}>
-        <NavbarSimple />
+          <Routes>
 
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <CardGrid />
-          <CardGrid />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/mymusic" element={<MyMusicPage />} />
+
+
+          </Routes>
+
+
+
+
+
         </div>
-
-      </div>
+      </BrowserRouter>
     </div>
   );
 }
