@@ -8,17 +8,17 @@ function Login() {
     password: ""
   });
 
-  //Store in localStorage
-  let storedItems = [];
-  let itemsInStore = [];
-  storedItems = JSON.parse(localStorage.getItem(itemsInStore));
- 
   const handleSubmit = (e) => {
+    //Store in localStorage
+    let storedItems = [];
+    storedItems = JSON.parse(localStorage.getItem("itemsInStore"));
+    console.log("storedItems-login:", storedItems);
     storedItems.forEach((item) => {
       if (item.name === input.name && item.email === input.email && item.password === input.password) {
+        console.log("Item.name-login:", item.name, "input.name-login:", input.name);
         alert(`Hello, ${input.name}, welcome to Music Info App`);
       } else {
-        alert(`Sorry, ${input.name}, we don't have details about you.\nDo you want to sign up?\nClick on the buttom 'SignUp`);
+        alert(`Sorry, ${input.name}, we don't have details about you.\nDo you want to sign up?\nClick on the buttom 'SignUp'`);
       }
     });
   }

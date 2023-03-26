@@ -8,19 +8,21 @@ function SignUp() {
         password: ""
     });
 
-    //Store in localStorage
     let storedItems = [];
     let itemsInStore = [];
-    storedItems = JSON.parse(localStorage.getItem(itemsInStore));
-    if (storedItems !==null) {
-        itemsInStore = storedItems;
-    }
 
     const handleSubmit = (e) => {
-        let itemToStore = input;
-        itemsInStore.push(itemToStore);
+      //Store in localStorage
+      console.log("storedItems-signup1:", storedItems);
+      storedItems = JSON.parse(localStorage.getItem("itemsInStore"));
+      console.log("storedItems-signup2:", storedItems);
+      if (storedItems !==null) {
+          itemsInStore = storedItems;
+      }
+      let itemToStore = input;
+      itemsInStore.push(itemToStore);
 
-        localStorage.setItem("itemsInStore", JSON.stringify(itemsInStore));
+      localStorage.setItem("itemsInStore", JSON.stringify(itemsInStore));
     }
   return (
     <div className="log">
