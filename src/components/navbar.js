@@ -65,7 +65,8 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: '', to: '/', label: 'Home', icon: IconHome },
+  { link: '', to: '/', label: 'Sign-Up / Log-In', icon: IconHome },
+  { link: '', to: '/home', label: 'Home', icon: IconHome },
   { link: '', to: '/search', label: 'Search', icon: IconSearch },
   { link: '', to: '/mymusic', label: 'My Music', icon: IconMusic },
 ];
