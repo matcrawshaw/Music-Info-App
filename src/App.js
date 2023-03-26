@@ -6,7 +6,10 @@ import { Button } from '@mantine/core';
 import MD5 from "crypto-js/md5";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/Home';
-import MyMusicPage from './Pages/MyMusic';;
+import MyMusicPage from './Pages/MyMusic';
+import SignUp from './Pages/SignUp/SignUp';
+import Login from './Pages/Login/Login';
+
 
 //import SearchPage from './Pages/Search';
 
@@ -69,7 +72,10 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={<HomePage />} />
+
+            <Route path="/" element={<SignUp />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/mymusic" element={<MyMusicPage />} />
 
