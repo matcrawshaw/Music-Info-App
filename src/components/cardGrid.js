@@ -1,7 +1,7 @@
 import ArticleCardImage from './card';
 import { SimpleGrid } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import Wrapper from './wrapper';
+
 
 
 
@@ -35,11 +35,11 @@ function CardGrid () {
 
  const renderArtists = function () {
   return (
-    topArtists.map((artist) => {
+    topArtists.slice(0, 10).map((artist) => {
       return (
     <ArticleCardImage 
-    title={artist.name} 
-    category="rock" 
+    title={artist.name.slice(0, 25)} 
+    category="" 
     image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
     ); 
   })
@@ -49,11 +49,11 @@ function CardGrid () {
 
 const renderTracks = function () {
   return (
-    topTracks.map((track) => {
+    topTracks.slice(0, 10).map((track) => {
       return (
     <ArticleCardImage 
-    title={track.name} 
-    category="rock" 
+    title={track.name.slice(0, 25)} 
+    category="" 
     image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
       ); 
   })
