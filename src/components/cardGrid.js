@@ -1,30 +1,38 @@
 import ArticleCardImage from './card';
-import { SimpleGrid } from '@mantine/core';
+import { SimpleGrid, Grid } from '@mantine/core';
+import { useState, useEffect } from 'react';
+ 
 
-function CardGrid () { 
 
-          return (
-            <SimpleGrid style={{display: "flex", flexDirection: "column"}} cols={1}>
-              <h2 style={{display: "flex", justifyContent: "start", marginLeft: 100}}>Top Artists</h2>
-              <div style={{display: "flex", flexDirection: "row", paddingLeft: 100}} cols={1}>
-              <div>
-              <ArticleCardImage title="new band here" category="rock" image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-              </div>
-              <div style={{marginLeft: 20}}>
-              <ArticleCardImage title="new band here" category="rock" image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-              </div>
-              <div style={{marginLeft: 20}}>
-              <ArticleCardImage title="new band here" category="rock" image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-              </div>
-              <div style={{marginLeft: 20}}>
-              <ArticleCardImage title="new band here" category="rock" image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-              </div>
-              <div style={{marginLeft: 20}}>
-                <ArticleCardImage title="new band here" category="rock" image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-              </div>
-              </div>
-            </SimpleGrid>
-          )
-        }
 
-   export default CardGrid;
+function CardGrid () {
+  let [topArtists, setTopArtists] = useState(null);
+
+  useEffect(() => {
+
+    fetch("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json")
+    .then((response) => response.json())
+    .then((data) => {
+      setTopArtists(data.artists.artist);
+      console.log(data.artists.artist);
+    })
+    }, [])
+  
+if (topArtists) { return (
+  <div>
+  {topArtists.map((band) => 
+      (
+        <ArticleCardImage
+      title={band.name}
+      category="rock"
+      image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
+      )
+    )}
+        </div>
+)
+
+      }
+
+}
+
+export default CardGrid;

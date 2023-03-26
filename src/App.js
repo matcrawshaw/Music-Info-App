@@ -10,17 +10,17 @@ import MyMusicPage from './Pages/MyMusic';
 
 const token = window.location.search.substring(7);
 if (token) {
-  const hash = MD5("api_keyf8b32377438bdf91d564673f48fba700methodauth.getSessiontoken" + token + "1a7a3c0954170c39e06a9f6c1a5d9358");
+  const hash = MD5(`api_keyf8b32377438bdf91d564673f48fba700methodauth.getSessiontoken${token}1a7a3c0954170c39e06a9f6c1a5d9358`);
 
-  fetch("http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=f8b32377438bdf91d564673f48fba700&token=" + token + "&format=json&api_sig=" + hash)
+  fetch(`http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=f8b32377438bdf91d564673f48fba700&token=${token}&format=json&api_sig=${hash}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      const currentUsername = data.session.name;
-      const currentUserkey = data.session.key;
+      let currentUser = {
+      username: data.session.name,
+      key: data.session.key,
+      };
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-      console.log(currentUsername);
-      console.log(currentUserkey);
     });
 }
 
@@ -32,22 +32,15 @@ fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=f8b3
     console.log(topTracks);
   })
 
-fetch("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json")
-  .then((response) => response.json())
-  .then((data) => {
-    const topArtists = data;
-    console.log("Top Artists");
-    console.log(topArtists);
-  })
-
 
 const getArtistImage = (artist) => {
-  fetch("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=f8b32377438bdf91d564673f48fba700&format=json")
+  fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
     .then((response) => response.json())
     .then((data) => {
       return (data.topalbums.album[0].image[1]['#text'])
     })
 }
+
 
 
 
@@ -62,10 +55,7 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
-        <Button
-          component="a"
-          rel="noopener noreferrer"
-          href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}`}>Link with LastFM</Button>
+        
         <div style={{ display: "flex" }}>
           <NavbarSimple />
 

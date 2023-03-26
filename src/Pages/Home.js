@@ -7,7 +7,7 @@ function HomePage () {
 return (
 <div style={{display: "flex" , justifyContent: "space-between"}}>
 <CardGrid/>
-<CardGrid/>
+
 </div>
 )
 }
