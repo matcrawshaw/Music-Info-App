@@ -1,12 +1,18 @@
+import SearchPage from './Pages/SearchPage';
 import './App.css';
 import NavbarSimple from './components/navbar'
-import CardGrid from './components/cardGrid';
+//import CardGrid from './components/cardGrid';
 import { Button } from '@mantine/core';
 import MD5 from "crypto-js/md5";
-import { Route, Routes, Router, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/Home';
-import SearchPage from './Pages/Search';
 import MyMusicPage from './Pages/MyMusic';
+import SignUp from './Pages/SignUp/SignUp';
+import Login from './Pages/Login/Login';
+
+
+//import SearchPage from './Pages/Search';
+
 
 const token = window.location.search.substring(7);
 if (token) {
@@ -53,11 +59,6 @@ const getArtistImage = (artist) => {
 
 function App() {
 
-
-
-
-
-
   return (
     <div className="App">
 
@@ -71,7 +72,10 @@ function App() {
 
           <Routes>
 
-            <Route path="/" element={<HomePage />} />
+
+            <Route path="/" element={<SignUp />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/mymusic" element={<MyMusicPage />} />
 
