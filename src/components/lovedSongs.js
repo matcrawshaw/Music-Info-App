@@ -1,48 +1,64 @@
 import React from "react";
 import { Button } from "@mantine/core";
 import { useState, useEffect } from "react";
-import ArticleCardImage from "../components/card";
+import {SongCard} from './songCard'
 
 
+function LovedSongs({ currentUser }) {
 
-function LovedSongs() {
 
-    let [currentUser, setCurrentUser] = useState(null);
+  const getArtistImage = async (artist) => {
+    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+      const data = await response.json();
 
-    useEffect(() => {
+    return (data.topalbums.album[0].image[1]['#text'])
+     
+    }
   
-    currentUser  = JSON.parse(localStorage.getItem("currentUser"));
-        console.log(currentUser)      
-      }, [])
+  const [currentLoved, setCurrentLoved] = useState([])
 
-      let [currentLoved, setCurrentLoved] = useState(null);
+  useEffect(() => {
+    if (currentUser.lastFMname) {
+      fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.lastFMname}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+        .then((response) => response.json())
+        .then((data) => {
 
-      useEffect(() => {
-    
-    
-          fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.username}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
-          .then((response) => response.json())
-          .then((data) => {
-           
-           const currentLoved = data.lovedtracks.track;
-            console.log(currentLoved);
-          })
-        }, [])
+          setCurrentLoved(data.lovedtracks.track);
+          console.log("here", data.lovedtracks.track);
+        })
+    }
 
-    //   if (currentLoved)  return (
-    //     <div>
-    //     {topArtists.map((band) => 
-    //         (
-    //           <ArticleCardImage
-    //         title={band.name}
-    //         category="rock"
-    //         image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-    //         )
-    //       )}
-    //           </div>
-    //   )
-      
-            
+
+  }, [])
+
+  // const [currentLoved, setCurrentLoved] = useState(null);
+
+  // useEffect(() => {
+
+
+  //     fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.lastFMname}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+
+  //       setCurrentLoved(data.lovedtracks.track);
+  //       console.log(currentLoved);
+  //     })
+  //   }, [])
+
+  if (currentLoved) return (
+    <div>
+      {currentLoved.map((song) =>
+      (
+        <SongCard
+          key={song.mbid}
+          songName={song.name}
+          artistName={song.artist.name}/>
+      )
+      )}
+    </div>
+  )
+
+  return <></>
 
 
 }

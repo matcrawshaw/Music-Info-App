@@ -5,7 +5,8 @@ function SignUp() {
     const [input, setInput] = useState({
         name: "",
         email: "",
-        password: ""
+        password: "",
+        userLibrary: null
     });
 
     let storedItems = [];
@@ -20,9 +21,11 @@ function SignUp() {
           itemsInStore = storedItems;
       }
       let itemToStore = input;
+      let currentUser = input
       itemsInStore.push(itemToStore);
 
       localStorage.setItem("itemsInStore", JSON.stringify(itemsInStore));
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
     }
   return (
     <div className="log">

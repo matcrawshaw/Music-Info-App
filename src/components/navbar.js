@@ -96,7 +96,7 @@ function NavbarSimple() {
         </Group>
         {links}
       </Navbar.Section>
-      <Button component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}`}>Link with LastFM</Button>
+      <Button component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>
       <Navbar.Section className={classes.footer}>
         
         <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>

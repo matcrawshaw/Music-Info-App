@@ -1,7 +1,9 @@
-import ArticleCardImage from './card';
+
 import { SimpleGrid, Grid } from '@mantine/core';
 import { useState, useEffect } from 'react';
- 
+import { ArtistCard } from './artistCard';
+
+
 
 
 
@@ -20,18 +22,23 @@ function CardGrid () {
   
 if (topArtists) { return (
   <div>
-  {topArtists.map((band) => 
+     <Grid justify="space-around">
+      {topArtists.map((band) => 
       (
-        <ArticleCardImage
-      title={band.name}
-      category="rock"
+        <Grid.Col md={6} style={{maxWidth: 350}} sm={4} xs={4}> 
+        <ArtistCard 
+        artistName={band.name}
+        playCount={band.playCount}
       image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
+         </Grid.Col>
       )
     )}
+    </Grid>
         </div>
-)
 
-      }
+
+)}
+
 
 }
 
