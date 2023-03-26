@@ -8,7 +8,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/Home';
 import MyMusicPage from './Pages/MyMusic';
 import SignUp from './Pages/SignUp/SignUp';
-import Login from './Pages/Login/Login';
+//import Login from './Pages/Login/Login';
 
 
 //import SearchPage from './Pages/Search';

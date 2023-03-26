@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import{Navigate, useNavigate } from "react-router-dom";
-//import "./SignUp.css";
+import "./SignUp.css";
 
 function SignUp() {
     const [input, setInput] = useState({
@@ -10,8 +10,18 @@ function SignUp() {
     });
 
     //Store in localStorage
+    let storedItems = [];
+    let itemsInStore = [];
+    storedItems = JSON.parse(localStorage.getItem(itemsInStore));
+    if (storedItems !==null) {
+        itemsInStore = storedItems;
+    }
+
     const handleSubmit = (e) => {
-        localStorage.setItem("user", JSON.stringify(input));
+        let itemToStore = input;
+        itemsInStore.push(itemToStore);
+
+        localStorage.setItem("itemsInStore", JSON.stringify(itemsInStore));
         Navigate("/login");
     }
   return (
