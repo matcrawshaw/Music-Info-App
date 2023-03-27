@@ -1,4 +1,4 @@
-import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/SearchPage/SearchPage';
 import './App.css';
 import NavbarSimple from './components/navbar'
 //import CardGrid from './components/cardGrid';
@@ -10,8 +10,6 @@ import MyMusicPage from './Pages/MyMusic';
 import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 
-
-//import SearchPage from './Pages/Search';
 
 
 const token = window.location.search.substring(7);
