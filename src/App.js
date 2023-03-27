@@ -28,12 +28,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <MantineProvider theme={{
-          colorScheme: "dark",
-          fontFamily: 'Comic Sans, Verdana, sans-serif',
-          fontFamilyMonospace: 'Monaco, Courier, monospace',
-          headings: { fontFamily: 'Greycliff CF, sans-serif' }
-        }}>
+        <MantineProvider>
           <div style={{ display: "flex" }}>
             <NavbarSimple />
             <Routes>
