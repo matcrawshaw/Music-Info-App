@@ -51,10 +51,10 @@ const renderTracks = function () {
   return (
     topTracks.slice(0, 10).map((track) => {
       return (
-    <ArticleCardImage 
+    <ArticleCardImage
     title={track.name.slice(0, 25)} 
     category="" 
-    image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
+    image={track.image[0]["#text"]}/>
       ); 
   })
   )
