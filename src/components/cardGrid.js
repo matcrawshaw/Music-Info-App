@@ -1,91 +1,84 @@
-import ArticleCardImage from './card';
-import { SimpleGrid } from '@mantine/core';
-import { useEffect, useState } from 'react';
 
+import { SimpleGrid, Grid } from '@mantine/core';
+import { useState, useEffect } from 'react';
+import { ArtistCard } from './artistCard';
+import { SongCard } from './songCard';
 
 
 
 
 function CardGrid () {
-
-  const [topArtists, setTopArtists] = useState(null);
-  const [topTracks, setTopTracks] = useState(null);
-
+  let [topArtists, setTopArtists] = useState(null);
+  let [topTracks, setTopTracks] = useState(null)
   useEffect(() => {
 
-  fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
-  .then((response) => response.json())
-  .then((data) => {
-    setTopArtists(data.artists.artist);
-    console.log("Top Artists");
-    console.log(topArtists);
-  });
- }, []);
+    fetch("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json")
+    .then((response) => response.json())
+    .then((data) => {
+      setTopArtists(data.artists.artist);
+      console.log(data.artists.artist);
+    })
+    }, []);
 
- useEffect(() => {
+    useEffect(() => {
 
-  fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=f8b32377438bdf91d564673f48fba700&format=json")
-  .then((response) => response.json())
-  .then((data) => {
-    setTopTracks(data.tracks.track);
-    console.log("Top Tracks");
-    console.log(topTracks);
-  });
- }, []);
+      fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=f8b32377438bdf91d564673f48fba700&format=json")
+      .then((response) => response.json())
+      .then((data) => {
+        setTopTracks(data.tracks.track);
+        console.log("Top Tracks");
+        console.log(data.tracks.track);
+      });
+     }, []);
 
- const renderArtists = function () {
-  return (
-    topArtists.slice(0, 10).map((artist) => {
+     const renderTracks = function () {
       return (
-    <ArticleCardImage 
-    title={artist.name.slice(0, 25)} 
-    category="" 
+        topTracks.slice(0, 20).map((track) => {
+          return (
+        <SongCard
+        songName={track.name} 
+        artistName={track.artist.name} 
+        image={track.image[0]["#text"]}/>
+          ); 
+      })
+      )
+    };
+    
+const renderArtists = function () {
+return (
+  topArtists.slice(0, 20).map((band) => 
+    (
+      // <Grid.Col md={8} style={{maxWidth: 350}} sm={6} xs={4}> 
+      <ArtistCard 
+      artistName={band.name}
+      playCount={band.playCount}
     image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-    ); 
-  })
+      //  </Grid.Col>
+    )
   )
-};
+)
+}
 
 
-const renderTracks = function () {
-  return (
-    topTracks.slice(0, 10).map((track) => {
-      return (
-    <ArticleCardImage
-    title={track.name.slice(0, 25)} 
-    category="" 
-    image={track.image[0]["#text"]}/>
-      ); 
-  })
-  )
-};
-
-
-
-  if (topArtists) {
-  return (
-            <SimpleGrid style={{display: "flex", flexDirection: "column"}} cols={1}>
-              <h2 style={{display: "flex", justifyContent: "start", marginLeft: 100}}>Top Artists</h2>
+if (topArtists && topTracks) { return (
+  <div>
+     <Grid justify="space-around">
+     <h2 style={{display: "flex", justifyContent: "start", marginLeft: 100}}>Top Artists</h2>
               <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", marginLeft: 100}} cols={1}>
               {renderArtists()};
-              </div>
-              <h2 style={{display: "flex", justifyContent: "start", marginLeft: 100}}>Top Tracks</h2>
+            </div>
+
+    <h2 style={{display: "flex", justifyContent: "start", marginLeft: 100}}>Top Tracks</h2>
               <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", marginLeft: 100}} cols={1}>
               {renderTracks()};
             </div>
-              {/* <div style={{marginLeft: 20}}>
-              <ArticleCardImage title="new band here" category="rock" image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-              </div>
-               */}
-          </SimpleGrid> 
-      
-          )
-          } 
-        }
-  
-
-   export default CardGrid;
+    </Grid>
+        </div>
 
 
-  
+)}
 
+
+}
+
+export default CardGrid;

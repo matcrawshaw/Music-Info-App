@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createStyles, Navbar, Group, Code, getStylesRef, rem } from '@mantine/core';
+import { createStyles, Navbar, Group, Code, getStylesRef, rem, Button } from '@mantine/core';
 import {
   IconLogout,
   IconHome,
@@ -96,9 +96,11 @@ function NavbarSimple() {
         </Group>
         {links}
       </Navbar.Section>
-
+      <Button component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>
       <Navbar.Section className={classes.footer}>
+        
         <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+          
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
         </a>

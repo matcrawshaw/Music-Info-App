@@ -9,6 +9,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'flex-start',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    // filter:'brightness(40%)',
   },
 
   title: {
@@ -28,13 +29,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-interface ArticleCardImageProps {
-  image: string;
-  title: string;
-  category: string;
-}
+// interface ArticleCardImageProps {
+//   image: string;
+//   title: string;
+//   category: string;
+// }
 
-function ArticleCardImage({ image, title, category }: ArticleCardImageProps) {
+function ArticleCardImage({ image, title, category }/*: ArticleCardImageProps*/) {
   const { classes } = useStyles();
 
   return (
@@ -53,9 +54,7 @@ function ArticleCardImage({ image, title, category }: ArticleCardImageProps) {
           {title}
         </Title>
       </div>
-      <Button variant="white" color="dark">
-        Read article
-      </Button>
+
     </Paper>
   );
 }
