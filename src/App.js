@@ -1,92 +1,46 @@
 import SearchPage from './Pages/SearchPage';
 import './App.css';
 import NavbarSimple from './components/navbar'
-//import CardGrid from './components/cardGrid';
-import { Button } from '@mantine/core';
-import MD5 from "crypto-js/md5";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/Home';
 import MyMusicPage from './Pages/MyMusic';
 import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
-
-
-//import SearchPage from './Pages/Search';
-
-
-const token = window.location.search.substring(7);
-if (token) {
-  const hash = MD5("api_keyf8b32377438bdf91d564673f48fba700methodauth.getSessiontoken" + token + "1a7a3c0954170c39e06a9f6c1a5d9358");
-
-  fetch("http://ws.audioscrobbler.com/2.0/?method=auth.getSession&api_key=f8b32377438bdf91d564673f48fba700&token=" + token + "&format=json&api_sig=" + hash)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      const currentUsername = data.session.name;
-      const currentUserkey = data.session.key;
-
-      console.log(currentUsername);
-      console.log(currentUserkey);
-    });
-}
-
+import { LastFmAuthenticator } from './Pages/LastFmAuthenticator'
+import { useEffect, useState } from 'react';
+import { MantineProvider } from '@mantine/core';
+import { useMantineTheme } from '@mantine/core';
 fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=f8b32377438bdf91d564673f48fba700&format=json")
   .then((response) => response.json())
   .then((data) => {
     const topTracks = data;
-    console.log("Top Tracks");
-    console.log(topTracks);
+    // console.log("Top Tracks");
+    // console.log(topTracks);
   })
-
-fetch("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json")
-  .then((response) => response.json())
-  .then((data) => {
-    const topArtists = data;
-    console.log("Top Artists");
-    console.log(topArtists);
-  })
-
-
-const getArtistImage = (artist) => {
-  fetch("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + artist + "&api_key=f8b32377438bdf91d564673f48fba700&format=json")
-    .then((response) => response.json())
-    .then((data) => {
-      return (data.topalbums.album[0].image[1]['#text'])
-    })
-}
-
 
 
 function App() {
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+
+
   return (
     <div className="App">
-
       <BrowserRouter>
-        <Button
-          component="a"
-          rel="noopener noreferrer"
-          href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}`}>Link with LastFM</Button>
-        <div style={{ display: "flex" }}>
-          <NavbarSimple />
-
-          <Routes>
-
-
-            <Route path="/" element={<SignUp />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/search" element={<SearchPage />} />
-            <Route path="/mymusic" element={<MyMusicPage />} />
-
-
-          </Routes>
-
-
-
-
-
-        </div>
+        <MantineProvider>
+          <div style={{ display: "flex" }}>
+            <NavbarSimple />
+            <Routes>
+              <Route path="/" element={<SignUp />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route path="/mymusic" element={<MyMusicPage currentUser={currentUser} />} />
+              <Route path='/lastfm' element={<LastFmAuthenticator />} />
+            </Routes>
+          </div>
+        </MantineProvider>
       </BrowserRouter>
     </div>
   );
