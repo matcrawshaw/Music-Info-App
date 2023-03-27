@@ -39,7 +39,7 @@ function ArticleCardImage({ image, title, category }/*: ArticleCardImageProps*/)
   const { classes } = useStyles();
 
   return (
-    <Paper style={{width: rem(200), height: rem(200)}}
+    <Paper style={{width: rem(200), height: rem(200), margin: 10}}
       shadow="md"
       p="xl"
       radius="md"
