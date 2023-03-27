@@ -25,7 +25,7 @@ if (topArtists) { return (
      <Grid justify="space-around">
       {topArtists.map((band) => 
       (
-        <Grid.Col md={6} style={{maxWidth: 350}} sm={4} xs={4}> 
+        <Grid.Col md={8} style={{maxWidth: 350}} sm={6} xs={4}> 
         <ArtistCard 
         artistName={band.name}
         playCount={band.playCount}
