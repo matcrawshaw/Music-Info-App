@@ -18,16 +18,16 @@ export function LastFmAuthenticator() {
 
                 if (!data.error) {
                     let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+                    if (currentUser)
                     currentUser = Object.assign(currentUser, {
                         lastFMname: data.session.name,
-                        lastSessionKey: data.session.key
+                        lastSessionKey: data.session.key,
+                        isLinked: true,
                     });
 
-                    console.log("setting Session storage")
 
                     localStorage.setItem('currentUser', JSON.stringify(currentUser))
 
-                    console.log('done setting session storage')
                 }
 
             }
@@ -38,5 +38,5 @@ export function LastFmAuthenticator() {
         setData();
     }, [])
 
-    return complete ? <Navigate to='/home' /> : <></>;
+    return complete ? <Navigate to='/home' />  : <></>;
 }

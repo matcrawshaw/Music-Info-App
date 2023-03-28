@@ -1,4 +1,11 @@
 import { createStyles, Paper, Text, Title, Button, rem } from '@mantine/core';
+import {
+  IconHeart,
+  IconHeartFilled
+} from '@tabler/icons-react';
+import { useState } from 'react';
+
+
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -15,19 +22,15 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontFamily: `Greycliff CF ${theme.fontFamily}`,
     fontWeight: 800,
-    // color: theme.white,
     color: "yellow",
+    // color: theme.white,
     lineHeight: 1.2,
-    fontSize: rem(20),
+    fontSize: rem(32),
     marginTop: theme.spacing.xs,
-    textAlign: "center"
-
   },
 
   category: {
-    // color: theme.white,
     color: "yellow",
-   
     fontWeight: 600,
     textTransform: 'uppercase',
   },
@@ -39,8 +42,22 @@ const useStyles = createStyles((theme) => ({
 //   category: string;
 // }
 
-function ArticleCardImage({ image, title, category }/*: ArticleCardImageProps*/) {
+function ArticleCardWithHeart({ image, title, category, currentUser }/*: ArticleCardImageProps*/) {
   const { classes } = useStyles();
+  const [heart, setHeart] = useState(false);
+
+
+
+  function SaveSong(song, artistName) {
+  
+  setHeart((prevHeart) => !prevHeart)
+  const newSave = {
+  name: song,
+  artist: { name: artistName} } 
+
+currentUser.savedSongs.push(newSave);
+localStorage.setItem("currentUser", JSON.stringify(currentUser));
+}
 
   return (
     <Paper style={{width: rem(200), height: rem(200), margin: 10, alignItems: "center"}}
@@ -50,17 +67,19 @@ function ArticleCardImage({ image, title, category }/*: ArticleCardImageProps*/)
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
     >
-      <div >
+      <div>
         <Text className={classes.category} size="s">
           {category}
         </Text>
-        <Title order={3} className={classes.title}>
+        <Title order={3} style={{fontSize: 20}}className={classes.title}>
           {title}
         </Title>
+ 
       </div>
-
+      <a artist={category} song={title} style={{justifyContent: "center"}}onClick={() => SaveSong(title, category)} > 
+      {heart ? <IconHeartFilled style={{color: "red"}}/> : <IconHeart style={{color: "red"}}/> } </a>
     </Paper>
   );
 }
 
-export default ArticleCardImage;
+export default ArticleCardWithHeart;

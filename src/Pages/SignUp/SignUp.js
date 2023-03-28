@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import "./SignUp.css";
-
+import { Navigate } from "react-router-dom";
 function SignUp() {
     const [input, setInput] = useState({
         name: "",
         email: "",
         password: "",
-        userLibrary: null
+        isLoggedIn: true,
+        savedSongs: [],
     });
 
     let storedItems = [];
@@ -31,9 +32,9 @@ function SignUp() {
     <div className="log">
       <div className="wrapper">
         <div className="left">
-          <h3 className="logo">Music Info App</h3>
+          <h3 className="logo">NoiseTracker</h3>
           <span className="comment">
-            Find information about your favourite singers.
+            Find information about your favourite music.
           </span>
         </div>
         <div className="right">

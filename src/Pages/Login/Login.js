@@ -28,9 +28,9 @@ function Login() {
     <div className="log">
       <div className="wrapper">
         <div className="left">
-          <h3 className="logo">Music Info App</h3>
+          <h3 className="logo">NoiseTracker</h3>
           <span className="comment">
-            Find information about your favourite singers.
+            Find information about your favourite artists.
           </span>
         </div>
         <div className="right">

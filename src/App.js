@@ -8,32 +8,27 @@ import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
 import { LastFmAuthenticator } from './Pages/LastFmAuthenticator'
 import { useEffect, useState } from 'react';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, rem } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
-fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=f8b32377438bdf91d564673f48fba700&format=json")
-  .then((response) => response.json())
-  .then((data) => {
-    const topTracks = data;
-    // console.log("Top Tracks");
-    // console.log(topTracks);
-  })
+
 
 
 function App() {
 
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-
-
   return (
     <div className="App">
       <BrowserRouter>
         <MantineProvider>
-          <div style={{ display: "flex" }}>
-            <NavbarSimple />
+          <div style={{ 
+            display: "flex", 
+            // backgroundImage: "linear-gradient(to right, #1a2422, #4c4f42)", 
+            height: "250dvh"  }}>
+            <NavbarSimple currentUser={currentUser} />
             <Routes>
               <Route path="/" element={<SignUp />} />
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/home" element={<HomePage currentUser={currentUser} />} />
               <Route path="/login" element={<Login />} />
               <Route path="/search" element={<SearchPage />} />
               <Route path="/mymusic" element={<MyMusicPage currentUser={currentUser} />} />
