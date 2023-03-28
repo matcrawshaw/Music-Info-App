@@ -88,6 +88,10 @@ function NavbarSimple() {
     </NavLink>
   ));
 
+  const logOut = function () {
+    localStorage.removeItem("currentUser");
+  }
+
   return (
     <Navbar height={700} width={{ sm: 240 }} p="md">
       <Navbar.Section grow>
@@ -99,7 +103,7 @@ function NavbarSimple() {
       <Button component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>
       <Navbar.Section className={classes.footer}>
         
-        <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+        <a href="#" className={classes.link} onClick={logOut}>
           
           <IconLogout className={classes.linkIcon} stroke={1.5} />
           <span>Logout</span>
