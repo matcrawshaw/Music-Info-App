@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import "./SignUp.css";
-
+import { Navigate } from "react-router-dom";
 function SignUp() {
     const [input, setInput] = useState({
         name: "",
         email: "",
         password: "",
-        userLibrary: null,
-        isLoggedIn: true
+        isLoggedIn: true,
+        savedSongs: [],
     });
 
     let storedItems = [];
