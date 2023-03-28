@@ -12,6 +12,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [Screenshots](#screenshots)
 - [Credits](#credits)
 - [License](#license)
 
@@ -19,13 +20,13 @@
 
 To install the application, follow these steps:
 
-Clone the repository to your local machine
-Install the required dependencies by running npm install
-Start the application by running npm start
-Usage
-The application has a simple and intuitive user interface. Once the application is running, you can add, edit, and delete tasks as needed.
+    - Clone the repository to your local machine
+    - Install the required dependencies by running npm install
+    - Start the application by running npm start
 
 ## Usage
+
+As a user, I want to gather information of any inputted artist, as well as the option to view my own library of saved artists from previous searches.
 
 ## Contributing
 
@@ -37,6 +38,8 @@ If you'd like to contribute to the development of this application, please follo
     - Push your changes to your fork
     - Submit a pull request
 
+## Screenshots
+
 ## Credits
 
     - Mat Crawshaw (https://github.com/matcrawshaw)
@@ -45,5 +48,5 @@ If you'd like to contribute to the development of this application, please follo
     - Istvan Szeles (https://github.com/szeles0619)
 
 ## License
-This application is licensed under the MIT License. See the LICENSE file for more details.
 
+This application is licensed under the MIT License. See the LICENSE file for more details.
