@@ -64,14 +64,23 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const data = [
-  { link: '', to: '/', label: 'Sign-Up / Log-In', icon: IconHome },
-  { link: '', to: '/home', label: 'Home', icon: IconHome },
-  { link: '', to: '/search', label: 'Search', icon: IconSearch },
-  { link: '', to: '/mymusic', label: 'My Music', icon: IconMusic },
-];
 
-function NavbarSimple() {
+
+
+
+
+
+function NavbarSimple({currentUser}) {
+
+
+
+  const data = [
+    { link: '', to: '/', label: 'Sign-Up / Log-In', icon: IconHome },
+    { link: '', to: '/home', label: 'Home', icon: IconHome },
+    // { link: '', to: '/search', label: 'Search', icon: IconSearch },
+    { link: '', to: '/mymusic', label: 'My Music', icon: IconMusic },
+  ];
+
   const { classes, cx } = useStyles();
   const [active, setActive] = useState('Billing');
 

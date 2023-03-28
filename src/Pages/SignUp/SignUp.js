@@ -6,7 +6,8 @@ function SignUp() {
         name: "",
         email: "",
         password: "",
-        userLibrary: null
+        userLibrary: null,
+        isLoggedIn: true
     });
 
     let storedItems = [];
@@ -31,9 +32,9 @@ function SignUp() {
     <div className="log">
       <div className="wrapper">
         <div className="left">
-          <h3 className="logo">Music Info App</h3>
+          <h3 className="logo">NoiseTracker</h3>
           <span className="comment">
-            Find information about your favourite singers.
+            Find information about your favourite music.
           </span>
         </div>
         <div className="right">
