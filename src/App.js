@@ -23,7 +23,7 @@ function App() {
         <MantineProvider>
           <div style={{ 
             display: "flex", 
-            backgroundImage: "linear-gradient(to right, #1a2422, #4c4f42)", 
+            // backgroundImage: "linear-gradient(to right, #1a2422, #4c4f42)", 
             height: "250dvh"  }}>
             <NavbarSimple currentUser={currentUser} />
             <Routes>
