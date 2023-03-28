@@ -15,7 +15,9 @@ function LovedSongs({ currentUser }) {
      
     }
   
-  const [currentLoved, setCurrentLoved] = useState([])
+    const [currentLoved, setCurrentLoved] = useState([])
+
+
 
   useEffect(() => {
     if (currentUser.lastFMname) {
@@ -24,26 +26,16 @@ function LovedSongs({ currentUser }) {
         .then((data) => {
 
           setCurrentLoved(data.lovedtracks.track);
-          console.log("here", data.lovedtracks.track);
-        })
+         
+        }) 
+    } 
+    if (!currentUser.lastFMname) {
+      setCurrentLoved([])
     }
-
-
+  
   }, [])
 
-  // const [currentLoved, setCurrentLoved] = useState(null);
 
-  // useEffect(() => {
-
-
-  //     fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.lastFMname}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-
-  //       setCurrentLoved(data.lovedtracks.track);
-  //       console.log(currentLoved);
-  //     })
-  //   }, [])
 
   if (currentLoved) return (
     <div>
