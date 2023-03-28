@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
   category: {
     // color: theme.white,
     color: "yellow",
-    opacity: 0.7,
+   
     fontWeight: 600,
     textTransform: 'uppercase',
   },
@@ -43,15 +43,15 @@ function ArticleCardImage({ image, title, category }/*: ArticleCardImageProps*/)
   const { classes } = useStyles();
 
   return (
-    <Paper style={{width: rem(200), height: rem(200), margin: 10}}
+    <Paper style={{width: rem(200), height: rem(200), margin: 10, alignItems: "center"}}
       shadow="md"
       p="xl"
       radius="md"
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
     >
-      <div>
-        <Text className={classes.category} size="xs">
+      <div >
+        <Text className={classes.category} size="s">
           {category}
         </Text>
         <Title order={3} className={classes.title}>

@@ -28,10 +28,10 @@ const savedSongs = currentUser.savedSongs
         .then((data) => {
           console.log(savedSongs);
           console.log(data.lovedtracks.track);
-          for (let i=0; i < data.lovedtracks.track.length; i++) {
-            savedSongs.push(data.lovedtracks.track[i])
-          }
-
+          const songsFromLast = data.lovedtracks.track
+          songsFromLast.forEach(track => {
+            savedSongs.push(track)
+          });
           // savedSongs.concat(data.lovedtracks.track);
           console.log("saved here " , savedSongs);
           setCurrentLoved(savedSongs);

@@ -31,7 +31,6 @@ const useStyles = createStyles((theme) => ({
 
   category: {
     color: "yellow",
-    opacity: 0.7,
     fontWeight: 600,
     textTransform: 'uppercase',
   },
@@ -61,7 +60,7 @@ localStorage.setItem("currentUser", JSON.stringify(currentUser));
 }
 
   return (
-    <Paper style={{width: rem(200), height: rem(200), margin: 10}}
+    <Paper style={{width: rem(200), height: rem(200), margin: 10, alignItems: "center"}}
       shadow="md"
       p="xl"
       radius="md"
@@ -69,7 +68,7 @@ localStorage.setItem("currentUser", JSON.stringify(currentUser));
       className={classes.card}
     >
       <div>
-        <Text className={classes.category} size="xs">
+        <Text className={classes.category} size="s">
           {category}
         </Text>
         <Title order={3} style={{fontSize: 20}}className={classes.title}>
