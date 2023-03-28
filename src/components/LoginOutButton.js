@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createStyles, Navbar, Group, Code, getStylesRef, rem, Button } from '@mantine/core';
 import {
   IconLogout,
+  IconLogin,
   IconHome,
   IconSearch,
   IconMusic,
@@ -66,10 +67,11 @@ const useStyles = createStyles((theme) => ({
 
 
 function LoginOutButton({currentUser}) {
-    
+    const refresh = () => window.location.reload(true)
     const { classes, cx } = useStyles();
     const logOut = function () {
         localStorage.removeItem("currentUser");
+        refresh();
       }
 
       function LogoutButton() {
@@ -84,9 +86,9 @@ function LoginOutButton({currentUser}) {
       function LoginButton() {
         return (
             <NavLink to='/' end
-          className={classes.link} onClick={logOut}>
+          className={classes.link}>
           
-            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <IconLogin className={classes.linkIcon} stroke={1.5} />
             <span>Login/SignUp</span>
           </NavLink>
         )
