@@ -3,11 +3,11 @@ import { SimpleGrid, Grid } from '@mantine/core';
 import { useState, useEffect } from 'react';
 import { ArtistCard } from './artistCard';
 import { SongCard } from './songCard';
+import { SongCardWithHeart } from './songCardWithHeart';
 
 
 
-
-function CardGrid () {
+function CardGrid ({currentUser}) {
   let [topArtists, setTopArtists] = useState(null);
   let [topTracks, setTopTracks] = useState(null)
   useEffect(() => {
@@ -35,7 +35,7 @@ function CardGrid () {
       return (
         topTracks.slice(0, 20).map((track) => {
           return (
-        <SongCard
+        <SongCardWithHeart currentUser={currentUser}
         songName={track.name} 
         artistName={track.artist.name} 
         image={track.image[0]["#text"]}/>

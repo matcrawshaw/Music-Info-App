@@ -23,7 +23,7 @@ return (
 <div style={{display: "flex" , justifyContent: "space-between"}}>
 
 <Greeting/>
-<CardGrid/>
+<CardGrid currentUser={currentUser}/>
 </div>
 )
 

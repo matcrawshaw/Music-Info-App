@@ -6,6 +6,8 @@ import {SongCard} from './songCard'
 
 function LovedSongs({ currentUser }) {
 
+const savedSongs = currentUser.savedSongs
+
 
   const getArtistImage = async (artist) => {
     const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
@@ -24,13 +26,20 @@ function LovedSongs({ currentUser }) {
       fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.lastFMname}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
         .then((response) => response.json())
         .then((data) => {
+          console.log(savedSongs);
+          console.log(data.lovedtracks.track);
+          for (let i=0; i < data.lovedtracks.track.length; i++) {
+            savedSongs.push(data.lovedtracks.track[i])
+          }
 
-          setCurrentLoved(data.lovedtracks.track);
+          // savedSongs.concat(data.lovedtracks.track);
+          console.log("saved here " , savedSongs);
+          setCurrentLoved(savedSongs);
          
         }) 
     } 
     if (!currentUser.lastFMname) {
-      setCurrentLoved([])
+      setCurrentLoved(savedSongs)
     }
   
   }, [])

@@ -6,8 +6,8 @@ function SignUp() {
         name: "",
         email: "",
         password: "",
-        userLibrary: null,
-        isLoggedIn: true
+        isLoggedIn: true,
+        savedSongs: [],
     });
 
     let storedItems = [];
