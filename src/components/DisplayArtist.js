@@ -1,7 +1,9 @@
 import ArtistSearchCard from "./ArtistSearchCard/ArtistSearchCard";
 
 const DisplayArtist = ({infoBio = [], infoTAlbums = []}) => {
-  if (infoBio)
+  if (!infoBio || !infoTAlbums) {
+    return;
+  }
   //console.log("data-DisplayArtist-infoBio:", infoBio);
   console.log("data-DisplayArtist-infoTAlbums:", infoTAlbums);
   //console.log("----------------------DisplayArtist-data1a:", infoBio.artist.bio.content);
