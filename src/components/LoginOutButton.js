@@ -10,7 +10,7 @@ import {
 import { MantineLogo } from '@mantine/ds';
 
 import logo from './NoiseTrackerLogo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -71,6 +71,7 @@ function LoginOutButton({currentUser}) {
     const { classes, cx } = useStyles();
     const logOut = function () {
         localStorage.removeItem("currentUser");
+        
         refresh();
       }
 
