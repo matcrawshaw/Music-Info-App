@@ -1,11 +1,12 @@
 import React from "react";
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import DisplayArtist from '../../components/DisplayArtist';
 import './SearchPage.css';
 
 function SearchPage() {
     const [data, setData] = useState([]);
-    const [dataArt, setDataArt] = useState([]);
+    const [infoBio, setInfoBio] = useState([]);
+    const [infoTAlbums, setInfoTAlbums] = useState([]);
     const [input, setInput] = useState({
         name: ""
     });
@@ -14,11 +15,11 @@ function SearchPage() {
         e.preventDefault();
         
         let name = input.name;
-        console.log("name1:", name);
+        //console.log("name1:", name);
         const fetchArtist = async () => {
             try {
             
-                const options = {
+                /*const options = {
                     method: 'GET',
                     headers: {
                         'X-RapidAPI-Key': '6cd30188e7msh492a4fc09fc870fp1a17d5jsn46db895b6c29',
@@ -26,37 +27,45 @@ function SearchPage() {
                     }
                 };
                 
+                
+                
+                const info = await (await fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=' + name, options)).json();*/
                 console.log("name2:", name);
-                const info = await (await fetch('https://deezerdevs-deezer.p.rapidapi.com/search?q=' + name, options)).json();
-                setData(info);
-                console.log("fetchArtist-data1:", data.data[0]);
-                console.log("fetchArtist-data1a:", data.data[0].title);
-                setData(data.data[0]);
-                console.log("fetchArtist-data1b=1:", data);
+                const infoBio = await (await fetch("https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + name + "&api_key=10791e8a46be696b595ce7ecd4c9502e&format=json")).json();
+                const infoTAlbums = await (await fetch("http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=" + name + "&api_key=10791e8a46be696b595ce7ecd4c9502e&format=json")).json();
+                setInfoBio(infoBio);
+                setInfoTAlbums(infoTAlbums);
                 
-                for (let i = 0; i < data.data.length; i++) {
-                    dataArt.push({'name': data.data[i].artist.name, 'title':data.data[i].album.title, 'cover':data.data[i].album.cover});
-                }
-                setDataArt(dataArt);
-                console.log("fetchArtist-data2:", dataArt);
+            /*const options = {
+                    method: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '6cd30188e7msh492a4fc09fc870fp1a17d5jsn46db895b6c29',
+                        'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+                    }
+                };
+                fetch('https://shazam.p.rapidapi.com/shazam-events/list?artistId=73406786&l=en-US&from=2022-12-31&limit=50&offset=0', options)
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(err => console.error(err));*/
 
-                setDataArt(dataArt);
                 
-                
+                //console.log("----------------------fetchArtist-data1a:", infoBio.artist.bio.content);
+                //console.log("----------------------fetchArtist-data1b:", infoBio.artist.bio.links.link.href);
+                //Private properties key can be accessed with notation: Object["key"]
+                //console.log("----------------------fetchArtist-data1c:", infoTAlbums.topalbums.album[0].image[2]["#text"]);
+                //console.log("----------------------fetchArtist-data1d:", infoTAlbums.topalbums.album[0].name);
+               
             } catch (err) {
                 console.error(err);
-            }
-            
+            }        
         }
         fetchArtist();
-        console.log("fetchArtist-data3:", dataArt);
-            
- 
+        //console.log("------------------------fetchArtist-data2a:", infoBio.artist.bio.content);
+        //console.log("------------------------fetchArtist-data2d:", infoTAlbums.topalbums.album[0].name);
+
+
         
-    }//----------------------end handleSubmit----------------------
-
-     // Use of UseEffect: https://www.w3schools.com/react/react_useeffect.asp
-
+    }//----------------------end handleSubmit-------------
 
     return (
         <>
@@ -66,7 +75,7 @@ function SearchPage() {
                 <button type="submit" className="searchButton">Search</button>
             </form>
             <h2>Searched Artist:</h2>
-            <DisplayArtist data={dataArt} />
+            <DisplayArtist infoBio={infoBio} infoTAlbums={infoTAlbums} />
         </div>
         </>
     );
