@@ -13,8 +13,9 @@ function SearchPage() {
     
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+let input = {};
         let name = input.name;
+
         //console.log("name1:", name);
         const fetchArtist = async () => {
             try {
@@ -49,7 +50,7 @@ function SearchPage() {
                     .catch(err => console.error(err));*/
 
                 
-                //console.log("----------------------fetchArtist-data1a:", infoBio.artist.bio.content);
+                console.log("----------------------fetchArtist-data1a:", infoBio.artist.bio.content);
                 //console.log("----------------------fetchArtist-data1b:", infoBio.artist.bio.links.link.href);
                 //Private properties key can be accessed with notation: Object["key"]
                 //console.log("----------------------fetchArtist-data1c:", infoTAlbums.topalbums.album[0].image[2]["#text"]);
@@ -60,21 +61,18 @@ function SearchPage() {
             }        
         }
         fetchArtist();
-        //console.log("------------------------fetchArtist-data2a:", infoBio.artist.bio.content);
-        //console.log("------------------------fetchArtist-data2d:", infoTAlbums.topalbums.album[0].name);
-
-
-        
+        console.log("------------------------fetchArtist-data2a:", infoBio.artist.bio.content);
+        //console.log("------------------------fetchArtist-data2d:", infoTAlbums.topalbums.album[0].name);      
     }//----------------------end handleSubmit-------------
 
     return (
         <>
         <div className="wrapperS">
             <form onSubmit={handleSubmit} className="boxS">
-                <input name="name" value={input.name} onChange={(e) => setInput({ ...input, [e.target.name] : e.target.value,})} type="text" placeholder="Enter an artist to search" className="searchBox" />
+                <input name="name" value={input.name} onSubmit={(e) => setInput({ ...input, [e.target.name] : e.target.value,})} type="text" placeholder="Enter an artist to search" className="searchBox" />
                 <button type="submit" className="searchButton">Search</button>
             </form>
-            <h2>Searched Artist:</h2>
+            <h2>Searched Artist: {input.name}</h2>
             <DisplayArtist infoBio={infoBio} infoTAlbums={infoTAlbums} />
         </div>
         </>
