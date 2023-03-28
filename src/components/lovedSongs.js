@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@mantine/core";
+import { Button, Grid } from "@mantine/core";
 import { useState, useEffect } from "react";
 import {SongCard} from './songCard'
 
@@ -47,14 +47,18 @@ function LovedSongs({ currentUser }) {
 
   if (currentLoved) return (
     <div>
-      {currentLoved.map((song) =>
-      (
-        <SongCard
-          key={song.mbid}
-          songName={song.name}
-          artistName={song.artist.name}/>
-      )
-      )}
+      <Grid justify="space-around">
+      <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", marginLeft: 100}} cols={1}>
+        {currentLoved.map((song) =>
+          (
+          <SongCard
+            key={song.mbid}
+            songName={song.name}
+            artistName={song.artist.name}/>
+          )
+        )}
+        </div>
+      </Grid>
     </div>
   )
 
