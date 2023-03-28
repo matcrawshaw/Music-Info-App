@@ -12,7 +12,7 @@ function CardGrid ({currentUser}) {
   let [topTracks, setTopTracks] = useState(null)
   useEffect(() => {
 
-    fetch("http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json")
+    fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=f8b32377438bdf91d564673f48fba700&format=json")
     .then((response) => response.json())
     .then((data) => {
       setTopArtists(data.artists.artist);
