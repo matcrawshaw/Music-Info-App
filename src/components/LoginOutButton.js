@@ -7,7 +7,6 @@ import {
   IconMusic,
 } from '@tabler/icons-react';
 import { MantineLogo } from '@mantine/ds';
-import LoginOutButton from './LoginOutButton'
 
 import logo from './NoiseTrackerLogo.png';
 import { NavLink } from 'react-router-dom';
@@ -66,56 +65,45 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
+function LoginOutButton({currentUser}) {
+    
+    const { classes, cx } = useStyles();
+    const logOut = function () {
+        localStorage.removeItem("currentUser");
+      }
+
+      function LogoutButton() {
+        return (
+            <a href="#" className={classes.link} onClick={logOut}>
+          
+            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <span>Logout</span>
+          </a>
+        )
+      }
+      function LoginButton() {
+        return (
+            <NavLink to='/' end
+          className={classes.link} onClick={logOut}>
+          
+            <IconLogout className={classes.linkIcon} stroke={1.5} />
+            <span>Login/SignUp</span>
+          </NavLink>
+        )
+      }
+     
+    function currentButton() {
+        if (currentUser){
+            return LogoutButton()
+        }
+        else {return LoginButton()}
+    }
 
 
 
 
+return( currentButton() )
 
-function NavbarSimple({currentUser}) {
-
-
-
-  const data = [
- 
-    { link: '', to: '/home', label: 'Home', icon: IconHome },
-    // { link: '', to: '/search', label: 'Search', icon: IconSearch },
-    { link: '', to: '/mymusic', label: 'My Music', icon: IconMusic },
-  ];
-
-  const { classes, cx } = useStyles();
-  const [active, setActive] = useState('Billing');
-
-  const links = data.map((item) => (
-    <NavLink
-      to={item.to}
-      end
-      className={({ isActive }) => cx(classes.link, { [classes.linkActive]: isActive })}
-      key={item.label}
-
-    >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
-      <span>{item.label}</span>
-    </NavLink>
-  ));
-
-  const logOut = function () {
-    localStorage.removeItem("currentUser");
-  }
-
-  return (
-    <Navbar height={700} width={{ sm: 240 }} p="md">
-      <Navbar.Section grow>
-        <Group className={classes.header} position="apart">
-          <a component="a" href="/"><img style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
-        </Group>
-        {links}
-      </Navbar.Section>
-      <Button component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>
-      <Navbar.Section className={classes.footer}>
-        
-<LoginOutButton currentUser={currentUser}/>
-      </Navbar.Section>
-    </Navbar>
-  );
 }
-export default NavbarSimple
+
+export default LoginOutButton; 
