@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Grid } from "@mantine/core";
 import { useState, useEffect } from "react";
 import {SongCard} from './songCard'
-
+import { motion } from "framer-motion";
 
 function LovedSongs({ currentUser }) {
 
@@ -18,8 +18,6 @@ const savedSongs = currentUser.savedSongs
     }
   
     const [currentLoved, setCurrentLoved] = useState([])
-
-
 
   useEffect(() => {
     if (currentUser.lastFMname) {
@@ -42,7 +40,6 @@ const savedSongs = currentUser.savedSongs
        if (obj) {
          return finalArray
        } else {return finalArray.concat([current])}
-
        }, [])
           // savedSongs.concat(data.lovedtracks.track);
           setCurrentLoved(SavedSongsReduced);
@@ -60,16 +57,20 @@ const savedSongs = currentUser.savedSongs
   if (currentLoved) return (
     <div style={{justifyContent: "center"}}>
 
-<h2>My Loved Songs</h2>
+<h2 style={{color: "yellow"}}>Loved Songs</h2>
       <Grid justify="space-around">
       <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}>
 
         {currentLoved.map((song) =>
           (
+            <motion.div
+            whileHover={{ scale: 1.2 }}
+           >     
           <SongCard
             key={song.mbid}
             songName={song.name}
             artistName={song.artist.name}/>
+            </motion.div>
           )
         )}
         </div>
