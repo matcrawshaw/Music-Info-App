@@ -23,7 +23,7 @@ const recentSongs = [];
 
   useEffect(() => {
     if (currentUser.lastFMname) {
-      fetch(`http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${currentUser.lastFMname}&limit=15&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+      fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${currentUser.lastFMname}&limit=15&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data.toptracks.track);
@@ -53,7 +53,7 @@ const recentSongs = [];
       setCurrentLoved(recentSongs)
     }
   
-  }, [currentUser, currentUser.lastFMname])
+  }, [currentUser])
 
 
 

@@ -50,7 +50,7 @@ const savedSongs = currentUser.savedSongs
       setCurrentLoved(savedSongs)
     }
   
-  }, [currentUser, savedSongs, currentLoved])
+  }, [currentUser])
 
 
 
