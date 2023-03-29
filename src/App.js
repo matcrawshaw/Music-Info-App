@@ -39,7 +39,7 @@ const theme = useMantineTheme();
             display: "flex", 
             backgroundImage: `linear-gradient(to right, #080b08, #0d715d, #4c4f42)`, 
             filter: "saturate(.96)",
-            height: "250dvh"  }}>
+            height: "120%"  }}>
 
               <div
               style={{filter: "saturate(1.03)"}} >

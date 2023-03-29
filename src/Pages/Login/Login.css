@@ -1,7 +1,7 @@
 .log {
   background-image: linear-gradient(to right, #080B08, #0D715D, #4C4F42);
-    width: 100vw;
-    height: 100vh;
+    width: 100dvw;
+    height: 100dvh;
     display: flex;
     align-items: center;
     justify-content: center;  
