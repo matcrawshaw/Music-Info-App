@@ -4,10 +4,19 @@ import CardGrid from "../components/cardGrid";
 function HomePage ({currentUser}) {
 
 function UserGreeting(){
-    return <h1 style={{display: "inline"}}>Hi {currentUser.name}! welcome to NoiseTracker</h1>
+    return (
+        <> 
+        <h1 style={{ fontSize: 20}}>Hi, {currentUser.name}! </h1> 
+        <h1 style={{ fontSize: 20}}> Welcome to </h1> 
+         <h1 style={{lineHeight: .4}}>NoiseTracker</h1>
+          </>)
 }
 function GuestGreeting(){
-    return <h1 style={{display: "inline"}}>Hi, welcome to NoiseTracker</h1>
+    return (
+   <> 
+   <h1 style={{fontSize: 20}}>Welcome to </h1>
+    <h1 style={{fontWeight: 1, fontSize: 20}}>NoiseTracker</h1>
+     </>)
 }
 
 function Greeting() {
@@ -20,10 +29,12 @@ return GuestGreeting()
 
 
 return (
-<div style={{display: "flex" , justifyContent: "space-between"}}>
+<div style={{marginLeft: 170, flexWrap: "wrap", whiteSpace: "pre-wrap"}}>
+<div style={{display: "flex",justifyContent: "flex-start"}}>
+{/* <Greeting/> */}
+</div>
 
-<Greeting/>
-<CardGrid currentUser={currentUser}/>
+<CardGrid currentUser={currentUser}/> 
 </div>
 )
 

@@ -3,27 +3,31 @@ import { Button } from "@mantine/core";
 import { useState, useEffect } from "react";
 import ArticleCardImage from "../components/card";
 import LovedSongs from "../components/lovedSongs";
+import RecentSongs from '../components/recentSongs'
 import { Navigate } from "react-router-dom";
 
 function MyMusicPage({currentUser}) {
 
-function isLoggedIn() {
-    return <LovedSongs currentUser={currentUser}/>
+function RenderCards() {
+    return ( <>
+    <LovedSongs currentUser={currentUser}/>
+    <RecentSongs currentUser={currentUser}/>
+    </>
+    )
 }
-function isLoggedOut() {
+function Redirect() {
     return <Navigate to='/' />
 }
 
 function LoginCheck() {
     if (currentUser) {
-        return(isLoggedIn())
-    } else {return isLoggedOut()}
+        return(RenderCards())
+    } else {return Redirect()}
 }
 
 
     return (
-        <div style={{display: "flex" , justifyContent: "space-between"}}>
-            <h2>Loved Songs</h2>
+        <div style={{justifyContent: "center",  marginLeft: 160 }}>
             {LoginCheck()}
         </div>
     )
