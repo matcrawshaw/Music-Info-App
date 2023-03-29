@@ -18,7 +18,7 @@ function SignUp() {
       console.log("storedItems-signup1:", storedItems);
       storedItems = JSON.parse(localStorage.getItem("itemsInStore"));
       console.log("storedItems-signup2:", storedItems);
-      if (storedItems !==null) {
+      if (storedItems !== null) {
           itemsInStore = storedItems;
       }
       let itemToStore = input;
