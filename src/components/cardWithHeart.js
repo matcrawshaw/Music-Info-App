@@ -67,7 +67,7 @@ localStorage.setItem("currentUser", JSON.stringify(currentUser));
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
     >
-      <div>
+      <div style={{backgroundColor: 'rgba(52, 52, 52, 0.2)', borderRadius: "5px", minHeight: "45px"}}>
         <Text className={classes.category} size="s">
           {category}
         </Text>
