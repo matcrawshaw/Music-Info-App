@@ -23,7 +23,7 @@ const recentSongs = [];
 
   useEffect(() => {
     if (currentUser.lastFMname) {
-      fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${currentUser.lastFMname}&limit=15&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+      fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${currentUser.lastFMname}&limit=12&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
         .then((response) => response.json())
         .then((data) => {
           console.log(data.toptracks.track);
@@ -61,7 +61,7 @@ const recentSongs = [];
     <div style={{justifyContent: "center"}}>
 
 <h2 style={{color: "yellow"}}>Recently Listened</h2>
-      <Grid justify="space-around" style={{width: "80dvw"}}>
+      <Grid justify="center" style={{width: "80dvw"}}>
      
 
         {currentLoved.map((song) =>
@@ -69,7 +69,7 @@ const recentSongs = [];
             <motion.div
            whileHover={{ scale: 1.2 }}
           >
-            <Grid.Col style={{maxWidth: 10}}> 
+            <Grid.Col style={{maxWidth: 120}}> 
           <SongCard
             key={song.mbid}
             songName={song.name}
