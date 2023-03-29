@@ -60,7 +60,7 @@ const recentSongs = [];
   if (currentLoved) return (
     <div style={{justifyContent: "center"}}>
 
-<h2>Recently Listened</h2>
+<h2 style={{color: "yellow"}}>Recently Listened</h2>
       <Grid justify="space-around" style={{width: "80dvw"}}>
      
 

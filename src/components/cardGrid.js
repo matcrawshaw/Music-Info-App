@@ -72,12 +72,12 @@ return (
 if (topArtists && topTracks) { return (
   <div >
      <Grid justify="space-around">
-     <h2 style={{display: "flex", justifyContent: "flex-start"}}>Top Artists</h2>
+     <h2 style={{display: "flex", justifyContent: "flex-start", color: "yellow"}}>Top Artists</h2>
             <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}} cols={1}>
               {renderArtists()};
             </div>
 
-    <h2 style={{display: "flex", justifyContent: "flex-start"}}>Top Tracks</h2>
+    <h2 style={{display: "flex", justifyContent: "flex-start", color: "yellow"}}>Top Tracks</h2>
             <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent: "center"}} cols={1}>
               {renderTracks()};
             </div>

@@ -18,6 +18,8 @@ function App() {
 const theme = useMantineTheme();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
+
+  
   return (
     <div className="App">
       <BrowserRouter>
@@ -35,7 +37,11 @@ const theme = useMantineTheme();
           <div style={{ 
             display: "flex", 
             backgroundImage: `linear-gradient(to right, #080b08, #0d715d, #4c4f42)`, 
+            filter: "saturate(.96)",
             height: "250dvh"  }}>
+
+              <div
+              style={{filter: "saturate(1.03)"}} >
             <NavbarSimple currentUser={currentUser} />
             <Routes>
               <Route path="/" element={<SignUp />} />
@@ -45,6 +51,7 @@ const theme = useMantineTheme();
               <Route path="/mymusic" element={<MyMusicPage currentUser={currentUser} />} />
               <Route path='/lastfm' element={<LastFmAuthenticator />} />
             </Routes>
+            </div>
           </div>
         </MantineProvider>
       </BrowserRouter>

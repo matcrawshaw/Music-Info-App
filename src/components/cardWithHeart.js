@@ -4,6 +4,7 @@ import {
   IconHeartFilled
 } from '@tabler/icons-react';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 
 
@@ -47,8 +48,8 @@ function ArticleCardWithHeart({ image, title, category, currentUser }/*: Article
   const [heart, setHeart] = useState(false);
 
 
-
   function SaveSong(song, artistName) {
+   if (!currentUser){  return}
   
   setHeart((prevHeart) => !prevHeart)
   const newSave = {
