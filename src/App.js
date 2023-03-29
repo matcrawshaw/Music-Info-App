@@ -10,6 +10,7 @@ import { LastFmAuthenticator } from './Pages/LastFmAuthenticator'
 import { useEffect, useState } from 'react';
 import { MantineProvider, rem } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
+import { ThemeProvider } from '@mantine/styles';
 
 
 
