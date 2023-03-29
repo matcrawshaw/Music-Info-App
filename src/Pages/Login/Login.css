@@ -1,10 +1,10 @@
 .log {
+  background-image: linear-gradient(to right, #080B08, #0D715D, #4C4F42);
     width: 100vw;
     height: 100vh;
-    background-color: #f0f2f5;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;  
   }
   
   .wrapper {
@@ -21,7 +21,7 @@
   
   .logo {
     font-size: 50px;
-    color: #131cc0;
+    color: #f7ff04;
     margin-bottom: 10px;
   }
   
@@ -32,7 +32,7 @@
   .box{
       height: 300px;
       padding: 20px;
-      background-color: white;
+      background-color: f7ff04;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
@@ -44,7 +44,7 @@
     height: 40px;
     border-radius: 10px;
     border: 1px solid gray;
-    background-color: #a9ccf3;
+    background-color: white;
     font-size: 18px;
     padding-left: 20px;
   }
@@ -55,7 +55,7 @@
     height: 50px;
     border-radius: 10px;
     border: none;
-    background-color: #05274b;
+    background-color: #436f66;
     color: white;
     font-size: 18px;
     cursor: pointer;
@@ -67,7 +67,7 @@
     height: 50px;
     border-radius: 10px;
     border: none;
-    background-color: #0a2671;
+    background-color: #034134;
     color: white;
     font-size: 18px;
     cursor: pointer;
