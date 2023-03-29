@@ -7,10 +7,12 @@ import {
   IconMusic,
 } from '@tabler/icons-react';
 import { MantineLogo } from '@mantine/ds';
-import LoginOutButton from './LoginOutButton'
+import LoginOutButton from './LoginOutButton';
+import { Affix } from '@mantine/core';
+
 
 import logo from './NoiseTrackerLogo.png';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate} from 'react-router-dom';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -66,11 +68,6 @@ const useStyles = createStyles((theme) => ({
 }));
 
 
-
-
-
-
-
 function NavbarSimple({currentUser}) {
 
 const [linked, setLinked] = useState(false); 
@@ -82,7 +79,7 @@ setLinked(true) } else setLinked(false)
 
 function linkWithLastButton () {
 if (!linked){ 
-  return  <Button component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>
+  return  <Button style={{flexWrap: "wrap"}} component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>
 } else return <></>
 }
 
@@ -113,14 +110,30 @@ if (!linked){
     localStorage.removeItem("currentUser");
   }
 
+  function isLoggedIn() {
+    return 
+}
+function isLoggedOut() {
+    return <Navigate to='/' />
+}
+
+function LoginCheck() {
+    if (currentUser) {
+        return(isLoggedIn())
+    } else {return isLoggedOut()}
+}
+
   return (
-    <Navbar height={700} width={{ sm: 240 }} p="md">
+
+    <Affix position={{ bottom: rem(0), left: rem(0)}}>
+    <Navbar height="100dvh" width={{xsm: 120 }} p="md"  >
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
           <a component="a" href="/"><img style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
         </Group>
         {links}
       </Navbar.Section>
+     
       {linkWithLastButton()}
       
       <Navbar.Section className={classes.footer}>
@@ -128,6 +141,8 @@ if (!linked){
 <LoginOutButton currentUser={currentUser}/>
       </Navbar.Section>
     </Navbar>
+
+    </Affix>
   );
 }
 export default NavbarSimple

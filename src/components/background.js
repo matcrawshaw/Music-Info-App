@@ -11,11 +11,12 @@ function Demo() {
             from: 'orange',
             to: 'red',
             deg: 45,
-          },
+          }
         }}
       >
         <Button variant="gradient">Gradient from provider</Button>
       </MantineProvider>
     </Group>
   );
-}
+};
+

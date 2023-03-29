@@ -7,23 +7,22 @@ import { Navigate } from "react-router-dom";
 
 function MyMusicPage({currentUser}) {
 
-function isLoggedIn() {
+function RenderLoved() {
     return <LovedSongs currentUser={currentUser}/>
 }
-function isLoggedOut() {
+function Redirect() {
     return <Navigate to='/' />
 }
 
 function LoginCheck() {
     if (currentUser) {
-        return(isLoggedIn())
-    } else {return isLoggedOut()}
+        return(RenderLoved())
+    } else {return Redirect()}
 }
 
 
     return (
-        <div style={{display: "flex" , justifyContent: "space-between"}}>
-            <h2>Loved Songs</h2>
+        <div style={{display: "flex" , justifyContent: "center",  marginLeft: 160 }}>
             {LoginCheck()}
         </div>
     )

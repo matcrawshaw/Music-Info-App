@@ -23,18 +23,29 @@ const savedSongs = currentUser.savedSongs
 
   useEffect(() => {
     if (currentUser.lastFMname) {
-      fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.lastFMname}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+      fetch(`http://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${currentUser.lastFMname}&limit=15&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(savedSongs);
-          console.log(data.lovedtracks.track);
-          const songsFromLast = data.lovedtracks.track
-          songsFromLast.forEach(track => {
-            savedSongs.push(track)
-          });
+          console.log(data.toptracks.track);
+          const recentSongsFromLast = data.toptracks.track;
+         
+
+          // console.log(data.lovedtracks.track);
+          // const songsFromLast = data.lovedtracks.track;
+          // console.log(data.lovedtracks.track);
+          recentSongsFromLast.forEach(track => {
+         savedSongs.push(track)
+            });
+       const SavedSongsReduced = savedSongs.reduce((finalArray, current)=> {
+       let obj = finalArray.find((item) => item.name === current.name)
+
+       if (obj) {
+         return finalArray
+       } else {return finalArray.concat([current])}
+
+       }, [])
           // savedSongs.concat(data.lovedtracks.track);
-          console.log("saved here " , savedSongs);
-          setCurrentLoved(savedSongs);
+          setCurrentLoved(SavedSongsReduced);
          
         }) 
     } 
@@ -42,14 +53,17 @@ const savedSongs = currentUser.savedSongs
       setCurrentLoved(savedSongs)
     }
   
-  }, [])
+  }, [currentUser, currentUser.lastFMname])
 
 
 
   if (currentLoved) return (
-    <div>
+    <div style={{justifyContent: "center"}}>
+
+<h2>My Loved Songs</h2>
       <Grid justify="space-around">
-      <div style={{display: "flex", flexDirection: "row", flexWrap: "wrap", marginLeft: 100}} cols={1}>
+      <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}>
+
         {currentLoved.map((song) =>
           (
           <SongCard
