@@ -34,7 +34,7 @@ function LoginCheck() {
     return (
         <div style={{justifyContent: "center",  marginLeft: 160 }}>
             {LoginCheck()}
-                {linkWithLastButton(currentUser)}
+                {linkWithLastButton()}
         </div>
     )
 }
