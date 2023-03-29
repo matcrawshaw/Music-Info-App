@@ -6,12 +6,12 @@ import HomePage from './Pages/Home';
 import MyMusicPage from './Pages/MyMusic';
 import SignUp from './Pages/SignUp/SignUp';
 import Login from './Pages/Login/Login';
-import { LastFmAuthenticator } from './Pages/LastFmAuthenticator'
+import LastFmAuthenticator from './Pages/LastFmAuthenticator'
 import { useEffect, useState } from 'react';
 import { MantineProvider, rem } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { ThemeProvider } from '@mantine/styles';
-import LastFmAuthenticator from './Pages/LastFmAuthenticator'
+
 
 
 
