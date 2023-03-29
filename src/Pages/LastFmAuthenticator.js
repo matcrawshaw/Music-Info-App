@@ -38,5 +38,5 @@ export function LastFmAuthenticator() {
         setData();
     }, [])
 
-    return complete ? <Navigate to='/home' />  : <></>;
+    return complete ? <Navigate to='/mymusic' />  : <></>;
 }
