@@ -6,7 +6,7 @@ import "./ArtistSearchCard.css";
 // also, to display images in github pages: './react-portfolio' in src (before +pros.image)
 //Previous methods failed. Now hosted on the web:
 function ArtistSearchCard(props) {
-  console.log("props:", props);
+  console.log("-----------------props:----------------------", props);
   return (
     <div className="card">
       <div className="img-container">
@@ -15,7 +15,7 @@ function ArtistSearchCard(props) {
       <div className="content">
         <ul>
           <li>
-            <strong>Title:</strong> {props.title}
+            <strong>Title:</strong> {props.album}
           </li>
         </ul>
       </div>
