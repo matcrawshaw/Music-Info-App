@@ -1,12 +1,31 @@
-const DisplayArtist = ({data = []}) => {
+import { useScrollIntoView } from "@mantine/hooks";
+import { useState } from "react";
+import ArtistSearchCard from "./ArtistSearchCard/ArtistSearchCard";
 
+const DisplayArtist = ({infoBio = [], infoTAlbums = []}) => {
+  
+  if (infoBio && infoTAlbums) {
+  
+  console.log("data-DisplayArtist-infoBio:", infoBio);
+  console.log("data-DisplayArtist-infoTAlbums:", infoTAlbums);
+  console.log("----------------------DisplayArtist-data1a:", infoBio.artist.bio.content);
+  console.log("----------------------DisplayArtist-data1b:", infoBio.artist.bio.links.link.href);
+  console.log("----------------------DisplayArtist-data1c:", infoTAlbums.topalbums.album[0].image[2]["#text"]);
+  console.log("----------------------DisplayArtist-data1d:", infoTAlbums.topalbums.album[0].name);
+ 
+  
+  
+}
+  /**/
     //Display the data on screen. 
     return (    
       <div className="artist-wrapper">
-        {data.album.title.map((title) => (
-            <div className='artist-list'>
-              <img src={data.album.cover} />
-              <h4>{title}</h4>
+        <h1>Biography</h1>
+        <p>{infoBio.artist.bio.content}</p>
+        {infoTAlbums && 
+        artist.map((artAlb) => (
+            <div className='artist-list'> 
+              <ArtistSearchCard props={{id: artAlb.id, key: artAlb.id, album: artist.nameAlbum, image: artist.imageAlbum}} />
             </div>                        
           ))}
       </div>

@@ -1,4 +1,4 @@
-import SearchPage from './Pages/SearchPage';
+import Classical from './Pages/Classical/Classical';
 import './App.css';
 import NavbarSimple from './components/navbar'
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
@@ -47,7 +47,7 @@ const theme = useMantineTheme();
               <Route path="/" element={<SignUp />} />
               <Route path="/home" element={<HomePage currentUser={currentUser} />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/search" element={<SearchPage />} />
+              <Route path="/classical" element={<Classical />} />
               <Route path="/mymusic" element={<MyMusicPage currentUser={currentUser} />} />
               <Route path='/lastfm' element={<LastFmAuthenticator />} />
             </Routes>
