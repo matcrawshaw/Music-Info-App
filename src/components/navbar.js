@@ -80,7 +80,7 @@ const [linked, setLinked] = useState(false);
   const data = [
  
     { link: '', to: '/home', label: 'Home', icon: IconHome },
-    { link: '', to: '/classical', label: 'Classical', icon: IconMusic },
+    // { link: '', to: '/search', label: 'Search', icon: IconSearch },
     { link: '', to: '/mymusic', label: 'My Music', icon: IconMusic },
   ];
 
