@@ -6,7 +6,7 @@ import {
   IconSearch,
   IconMusic,
 } from '@tabler/icons-react';
-import { MantineLogo } from '@mantine/ds';
+
 import LoginOutButton from './LoginOutButton';
 import { Affix } from '@mantine/core';
 
@@ -129,7 +129,7 @@ function LoginCheck() {
     <Navbar height="100dvh" width={{xsm: 120 }} p="md"  >
       <Navbar.Section grow>
         <Group className={classes.header} position="apart">
-          <a component="a" href="/"><img style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
+          <a component="a" href="/home"><img style={{ width: 100, height: 100, borderRadius: "50%" }} src={logo} alt="logo" /></a>
         </Group>
         {links}
       </Navbar.Section>

@@ -50,7 +50,7 @@ function ArticleCardImage({ image, title, category }/*: ArticleCardImageProps*/)
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
     >
-      <div >
+      <div style={{backgroundColor: 'rgba(52, 52, 52, 0.4)', borderRadius: "5px"}} >
         <Text className={classes.category} size="s">
           {category}
         </Text>

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { ArtistCard } from './artistCard';
 import { SongCard } from './songCard';
 import { SongCardWithHeart } from './songCardWithHeart';
+import {motion} from 'framer-motion'
 
 
 
@@ -35,10 +36,14 @@ function CardGrid ({currentUser}) {
       return (
         topTracks.slice(0, 20).map((track) => {
           return (
+      <motion.div
+      whileHover={{ scale: 1.2 }}
+     >     
         <SongCardWithHeart currentUser={currentUser}
         songName={track.name} 
         artistName={track.artist.name} 
         image={track.image[0]["#text"]}/>
+        </motion.div> 
           ); 
       })
       )
@@ -48,12 +53,16 @@ const renderArtists = function () {
 return (
   topArtists.slice(0, 20).map((band) => 
     (
-      // <Grid.Col md={8} style={{maxWidth: 350}} sm={6} xs={4}> 
+      <motion.div
+      whileHover={{ scale: 1.2 }}
+     >
+      {/* // <Grid.Col md={8} style={{maxWidth: 350}} sm={6} xs={4}>  */}
       <ArtistCard 
       artistName={band.name}
       playCount={band.playCount}
     image="https://png.pngtree.com/png-clipart/20190517/original/pngtree-rock-group-music-band-png-image_3621390.jpg"/>
-      //  </Grid.Col>
+      {/* //  </Grid.Col> */}
+      </motion.div>
     )
   )
 )
