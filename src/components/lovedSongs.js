@@ -10,7 +10,7 @@ const savedSongs = currentUser.savedSongs
 
 
   const getArtistImage = async (artist) => {
-    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+    const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
       const data = await response.json();
 
     return (data.topalbums.album[0].image[2]['#text'])
