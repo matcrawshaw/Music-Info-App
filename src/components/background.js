@@ -1,14 +1,29 @@
-import React from 'react';
-import { createUseStyles } from 'react-jss';
-import { useMantineTheme } from '@mantine/core';
+import { MantineProvider, Center, Group } from '@mantine/core';
 
-const useStyles = createUseStyles({
-  wrapper: ({ theme }) => ({
-    background: theme.colors.gray[5],
-  }),
-});
+function Demo() {
+  return (
+    <MantineProvider inherit theme={{ defaultGradient: { from: 'blue', to: 'teal', deg: 20 } }}>
+      <Group position="center" grow>
+        <Center
+          sx={(theme) => ({
+            height: '2.5rem',
+            backgroundImage: theme.fn.gradient(),
+            color: theme.white,
+          })}
+        >
+          Default gradient
+        </Center>
 
-function YourComponent() {
-  const classes = useStyles({ theme: useMantineTheme() });
-  return <div className={classes.wrapper} />;
+        <Center
+          sx={(theme) => ({
+            height: '2.5rem',
+            backgroundImage: theme.fn.gradient({ from: 'red', to: 'orange', deg: 45 }),
+            color: theme.white,
+          })}
+        >
+          Custom gradient
+        </Center>
+      </Group>
+    </MantineProvider>
+  );
 }
