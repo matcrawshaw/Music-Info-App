@@ -58,22 +58,24 @@ const savedSongs = currentUser.savedSongs
     <div style={{justifyContent: "center"}}>
 
 <h2 style={{color: "yellow"}}>Loved Songs</h2>
-      <Grid justify="space-around">
-      <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}>
+      <Grid justify="center" style={{width: "80dvw"}}>
+      {/* <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}> */}
 
         {currentLoved.map((song) =>
           (
             <motion.div
             whileHover={{ scale: 1.2 }}
-           >     
+           > 
+           <Grid.Col style={{maxWidth: 120}}>     
           <SongCard
             key={song.mbid}
             songName={song.name}
             artistName={song.artist.name}/>
+             </Grid.Col>
             </motion.div>
           )
         )}
-        </div>
+        {/* </div> */}
       </Grid>
     </div>
   )
