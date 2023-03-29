@@ -1,22 +1,14 @@
-import { MantineProvider, Button, Group } from '@mantine/core';
+import React from 'react';
+import { createUseStyles } from 'react-jss';
+import { useMantineTheme } from '@mantine/core';
 
-function Demo() {
-  return (
-    <Group position="center">
-      <Button variant="gradient">Default gradient button</Button>
-      <MantineProvider
-        inherit
-        theme={{
-          defaultGradient: {
-            from: 'orange',
-            to: 'red',
-            deg: 45,
-          }
-        }}
-      >
-        <Button variant="gradient">Gradient from provider</Button>
-      </MantineProvider>
-    </Group>
-  );
-};
+const useStyles = createUseStyles({
+  wrapper: ({ theme }) => ({
+    background: theme.colors.gray[5],
+  }),
+});
 
+function YourComponent() {
+  const classes = useStyles({ theme: useMantineTheme() });
+  return <div className={classes.wrapper} />;
+}
