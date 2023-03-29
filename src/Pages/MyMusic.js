@@ -10,7 +10,7 @@ function MyMusicPage({currentUser}) {
 
 function linkWithLastButton (currentUser) {
 
-return(  <Button style={{flexWrap: "wrap"}} component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>)
+return(  <Button variant="gradient" gradient={{ from: 'grey', to: 'yellow' }} style={{flexWrap: "wrap"}} component="a" rel="noopener noreferrer" href={`https://www.last.fm/api/auth?api_key=f8b32377438bdf91d564673f48fba700&cb=${window.location.origin}/lastfm`}>Link with LastFM</Button>)
 }
 
 function RenderCards() {
