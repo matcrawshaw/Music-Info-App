@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "@mantine/core";
+import { Button, Grid } from "@mantine/core";
 import { useState, useEffect } from "react";
 import ArticleCardImage from "../components/card";
 import LovedSongs from "../components/lovedSongs";
@@ -14,10 +14,11 @@ return(  <Button variant="gradient" gradient={{ from: 'grey', to: 'yellow' }} st
 }
 
 function RenderCards() {
-    return ( <>
+    return ( <div style={{display: "flex"}}>
+    
     <LovedSongs currentUser={currentUser}/>
     <RecentSongs currentUser={currentUser}/>
-    </>
+    </div>
     )
 }
 function Redirect() {
@@ -26,16 +27,20 @@ function Redirect() {
 
 function LoginCheck() {
     if (currentUser) {
-        return(RenderCards())
+        return(
+            RenderCards()
+            )
     } else {return Redirect()}
 }
 
 
     return (
-        <div style={{justifyContent: "center",  marginLeft: 170, width: "90dvw"}}>
+        <Grid justify="space-around">
+        <div style={{justifyContent: "center",  marginLeft: 170, width: "90dvw", flexWrap: "wrap", whiteSpace: "pre-wrap"}}>
                 {LoginCheck()}
                 {linkWithLastButton()}
         </div>
+        </Grid>
     )
 }
 

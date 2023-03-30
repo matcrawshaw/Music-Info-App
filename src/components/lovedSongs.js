@@ -58,7 +58,7 @@ const savedSongs = currentUser.savedSongs
     <div style={{justifyContent: "center"}}>
     
 
-<h2 style={{color: "yellow"}}>Loved Songs</h2>
+<h2 style={{display: "flex", justifyContent: "center", color: "yellow"}}>Loved Songs</h2>
       <Grid justify="center" style={{justifyContent: "center", maxWidth: "85dvw"}}>
       {/* <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}> */}
 
@@ -67,6 +67,7 @@ const savedSongs = currentUser.savedSongs
             <motion.div
             whileHover={{ scale: 1.1 }}
            > 
+           
            <Grid.Col style={{maxWidth: 120}}>     
           <SongCard
             key={song.mbid}
