@@ -56,15 +56,16 @@ const savedSongs = currentUser.savedSongs
 
   if (currentLoved) return (
     <div style={{justifyContent: "center"}}>
+    
 
 <h2 style={{color: "yellow"}}>Loved Songs</h2>
-      <Grid justify="center" style={{width: "80dvw"}}>
+      <Grid justify="center" style={{justifyContent: "center", maxWidth: "85dvw"}}>
       {/* <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}> */}
 
         {currentLoved.map((song) =>
           (
             <motion.div
-            whileHover={{ scale: 1.2 }}
+            whileHover={{ scale: 1.1 }}
            > 
            <Grid.Col style={{maxWidth: 120}}>     
           <SongCard
