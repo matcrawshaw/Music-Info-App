@@ -3,7 +3,7 @@
 Front-end application that shows top music charts and allows songs to be saved in local storage, as well as linked with the LastFM API to show songs from other platforms.
 
 Home Page:
-![image](https://user-images.githubusercontent.com/119896882/228900576-bba9f123-8615-4438-9a80-c1e825f666b0.png)
+![main](https://user-images.githubusercontent.com/119896882/228902162-aae7a902-40c3-41af-b335-4b57f83097a4.PNG)
 ![tracks](https://user-images.githubusercontent.com/119896882/228900667-e6cacb9f-611d-49a4-a99d-a6aa429bdb69.PNG)
 
 My Music Page: 
