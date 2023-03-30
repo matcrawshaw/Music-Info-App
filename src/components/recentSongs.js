@@ -55,19 +55,17 @@ const recentSongs = [];
   
   }, [currentUser])
 
-
-
   if (currentLoved) return (
-    <div style={{justifyContent: "center"}}>
+    <div>
 
 <h2 style={{color: "yellow"}}>Recently Listened</h2>
-      <Grid justify="center" style={{width: "80dvw"}}>
+      <Grid justify="center" style={{justifyContent: "center", maxWidth: "85dvw"}}>
      
 
         {currentLoved.map((song) =>
           (
             <motion.div
-           whileHover={{ scale: 1.2 }}
+           whileHover={{ scale: 1.1 }}
           >
             <Grid.Col style={{maxWidth: 120}}> 
           <SongCard
@@ -78,6 +76,8 @@ const recentSongs = [];
             </motion.div>
           )
         )}
+
+        
       
       </Grid>
     </div>

@@ -27,7 +27,7 @@ function LastFmAuthenticator() {
 
 
                     localStorage.setItem('currentUser', JSON.stringify(currentUser))
-
+                    window.location.reload(false);
                 }
 
             }
