@@ -9,6 +9,7 @@ function Login() {
   });
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     //Store in localStorage
     let storedItems = [];
     storedItems = JSON.parse(localStorage.getItem("itemsInStore"));
