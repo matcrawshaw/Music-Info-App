@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, Grid } from "@mantine/core";
+import { Button, Grid, rem } from "@mantine/core";
 import { useState, useEffect } from "react";
 import {SongCard} from './songCard'
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
-function LovedSongs({ currentUser }) {
+function RecentSongs({ currentUser }) {
 
-const savedSongs = currentUser.savedSongs
+const recentSongs = [];
 
 
   const getArtistImage = async (artist) => {
@@ -19,35 +19,38 @@ const savedSongs = currentUser.savedSongs
   
     const [currentLoved, setCurrentLoved] = useState([])
 
+
+
   useEffect(() => {
     if (currentUser.lastFMname) {
-      fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getlovedtracks&user=${currentUser.lastFMname}&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
+      fetch(`https://ws.audioscrobbler.com/2.0/?method=user.gettoptracks&user=${currentUser.lastFMname}&limit=12&api_key=f8b32377438bdf91d564673f48fba700&format=json`)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data.lovedtracks.track);
-          const lovedSongsFromLast = data.lovedtracks.track;
+          console.log(data.toptracks.track);
+          const recentSongsFromLast = data.toptracks.track;
          
 
           // console.log(data.lovedtracks.track);
           // const songsFromLast = data.lovedtracks.track;
           // console.log(data.lovedtracks.track);
-          lovedSongsFromLast.forEach(track => {
-         savedSongs.push(track)
+          recentSongsFromLast.forEach(track => {
+         recentSongs.push(track)
             });
-       const SavedSongsReduced = savedSongs.reduce((finalArray, current)=> {
+       const recentSongsReduced = recentSongs.reduce((finalArray, current)=> {
        let obj = finalArray.find((item) => item.name === current.name)
 
        if (obj) {
          return finalArray
        } else {return finalArray.concat([current])}
+
        }, [])
-          // savedSongs.concat(data.lovedtracks.track);
-          setCurrentLoved(SavedSongsReduced);
+          // recentSongs.concat(data.lovedtracks.track);
+          setCurrentLoved(recentSongsReduced);
          
         }) 
     } 
     if (!currentUser.lastFMname) {
-      setCurrentLoved(savedSongs)
+      setCurrentLoved(recentSongs)
     }
   
   }, [currentUser])
@@ -57,25 +60,25 @@ const savedSongs = currentUser.savedSongs
   if (currentLoved) return (
     <div style={{justifyContent: "center"}}>
 
-<h2 style={{color: "yellow"}}>Loved Songs</h2>
+<h2 style={{color: "yellow"}}>Recently Listened</h2>
       <Grid justify="center" style={{width: "80dvw"}}>
-      {/* <div style={{display: "flex", flexWrap: "wrap", justifyContent: "center"}} cols={1}> */}
+     
 
         {currentLoved.map((song) =>
           (
             <motion.div
-            whileHover={{ scale: 1.2 }}
-           > 
-           <Grid.Col style={{maxWidth: 120}}>     
+           whileHover={{ scale: 1.2 }}
+          >
+            <Grid.Col style={{maxWidth: 120}}> 
           <SongCard
             key={song.mbid}
             songName={song.name}
             artistName={song.artist.name}/>
-             </Grid.Col>
+            </Grid.Col>
             </motion.div>
           )
         )}
-        {/* </div> */}
+      
       </Grid>
     </div>
   )
@@ -86,4 +89,4 @@ const savedSongs = currentUser.savedSongs
 }
 
 
-export default LovedSongs;
+export default RecentSongs;

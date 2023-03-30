@@ -3,27 +3,16 @@ import CardGrid from "../components/cardGrid";
 
 function HomePage ({currentUser}) {
 
-function UserGreeting(){
-    return <h1 style={{display: "inline"}}>Hi {currentUser.name}! welcome to NoiseTracker</h1>
-}
-function GuestGreeting(){
-    return <h1 style={{display: "inline"}}>Hi, welcome to NoiseTracker</h1>
-}
 
-function Greeting() {
-    if (currentUser) {
-return UserGreeting()
-    } else {
-return GuestGreeting()
-    }
-}
 
 
 return (
-<div style={{display: "flex" , justifyContent: "space-between"}}>
+<div style={{marginLeft: 170, flexWrap: "wrap", whiteSpace: "pre-wrap"}}>
+<div style={{display: "flex",justifyContent: "flex-start"}}>
+{/* <Greeting/> */}
+</div>
 
-<Greeting/>
-<CardGrid currentUser={currentUser}/>
+<CardGrid currentUser={currentUser}/> 
 </div>
 )
 

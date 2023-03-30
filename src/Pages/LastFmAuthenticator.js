@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import React from "react";
 import { useEffect, useState } from "react";
 
-export function LastFmAuthenticator() {
+function LastFmAuthenticator() {
     const [complete, setComplete] = useState(false);
 
     const params = new URLSearchParams(window.location.search);
@@ -38,5 +38,6 @@ export function LastFmAuthenticator() {
         setData();
     }, [])
 
-    return complete ? <Navigate to='/home' />  : <></>;
+    return complete ? <Navigate to='/mymusic' />  : <></>;
 }
+export default LastFmAuthenticator;

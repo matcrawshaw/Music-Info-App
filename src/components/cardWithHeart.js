@@ -4,6 +4,7 @@ import {
   IconHeartFilled
 } from '@tabler/icons-react';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 
 
@@ -47,8 +48,8 @@ function ArticleCardWithHeart({ image, title, category, currentUser }/*: Article
   const [heart, setHeart] = useState(false);
 
 
-
   function SaveSong(song, artistName) {
+   if (!currentUser){  return}
   
   setHeart((prevHeart) => !prevHeart)
   const newSave = {
@@ -67,7 +68,7 @@ localStorage.setItem("currentUser", JSON.stringify(currentUser));
       sx={{ backgroundImage: `url(${image})` }}
       className={classes.card}
     >
-      <div>
+      <div style={{backgroundColor: 'rgba(52, 52, 52, 0.2)', borderRadius: "5px", minHeight: "45px"}}>
         <Text className={classes.category} size="s">
           {category}
         </Text>
